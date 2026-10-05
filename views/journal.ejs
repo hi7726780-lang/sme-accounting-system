@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Journals</h2>
+    <p><a href="/journal/new">Create a new journal entry</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Entry No.</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Notes</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% entries.forEach(function(entry) { %>
+          <tr>
+            <td><%= entry.entry_number %></td>
+            <td><%= entry.entry_date %></td>
+            <td><%= entry.entry_type %></td>
+            <td><%= entry.status %></td>
+            <td><%= entry.notes %></td>
+            <td>
+              <% if (entry.status === 'posted') { %>
+                <form method="POST" action="/journal/<%= entry.id %>/reverse" style="display:inline;">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="warning">Reverse / Unpost</button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

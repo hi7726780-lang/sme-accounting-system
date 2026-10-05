@@ -1,0 +1,88 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="register-box">
+    <h2>Register company</h2>
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form method="POST" action="/register">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="inline">
+        <label style="flex:1">
+          First name
+          <input type="text" name="firstName" required>
+        </label>
+        <label style="flex:1">
+          Last name
+          <input type="text" name="lastName" required>
+        </label>
+      </div>
+      <label>
+        Email
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" required>
+      </label>
+      <label>
+        Company name
+        <input type="text" name="companyName" required>
+      </label>
+      <div class="inline">
+        <label style="flex:1">
+          Country
+          <select name="country">
+            <option value="Egypt">Egypt</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="IFRS">IFRS</option>
+          </select>
+        </label>
+        <label style="flex:1">
+          Standards
+          <select name="standard">
+            <option value="Egypt">Egypt</option>
+            <option value="Saudi">Saudi</option>
+            <option value="IFRS">IFRS</option>
+          </select>
+        </label>
+      </div>
+      <div class="inline">
+        <label style="flex:1">
+          Activity
+          <select name="activity">
+            <option value="Trading">Trading</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Services">Services</option>
+            <option value="Contracting">Contracting</option>
+            <option value="Restaurants">Restaurants</option>
+            <option value="Medical">Medical</option>
+            <option value="Poultry">Poultry</option>
+            <option value="Agricultural">Agricultural</option>
+            <option value="Real Estate">Real Estate</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label style="flex:1">
+          Currency
+          <select name="currency">
+            <option value="EGP">EGP</option>
+            <option value="SAR">SAR</option>
+            <option value="USD">USD</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        Preferred language
+        <select name="language">
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
+      <button type="submit">Create company</button>
+    </form>
+  </div>
+</main>
+</body>
+</html>

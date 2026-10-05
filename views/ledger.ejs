@@ -1,0 +1,25 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>General ledger</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Account</th><th>Debit</th><th>Credit</th><th>Balance</th></tr>
+      </thead>
+      <tbody>
+        <% accounts.forEach(function(account) { %>
+          <tr>
+            <td><a href="/ledger/<%= account.id %>"><%= account.code %></a></td>
+            <td><%= account.english_name %></td>
+            <td><%= formatMoney(Math.max(account.total_debit - account.total_credit, 0)) %></td>
+            <td><%= formatMoney(Math.max(account.total_credit - account.total_debit, 0)) %></td>
+            <td><%= formatMoney(account.nature === 'debit' ? (account.total_debit - account.total_credit) : (account.total_credit - account.total_debit)) %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

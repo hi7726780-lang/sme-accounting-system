@@ -1,0 +1,73 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Company profile</h2>
+    <form method="POST" action="/company/update">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <label>Company name
+        <input type="text" name="name" value="<%= company.name %>">
+      </label>
+      <div class="inline">
+        <label style="flex:1">Country
+          <select name="country">
+            <option value="Egypt" <%= company.country === 'Egypt' ? 'selected' : '' %>>Egypt</option>
+            <option value="Saudi Arabia" <%= company.country === 'Saudi Arabia' ? 'selected' : '' %>>Saudi Arabia</option>
+            <option value="IFRS" <%= company.country === 'IFRS' ? 'selected' : '' %>>IFRS</option>
+          </select>
+        </label>
+        <label style="flex:1">Standard
+          <select name="standard">
+            <option value="Egypt" <%= company.standard === 'Egypt' ? 'selected' : '' %>>Egypt</option>
+            <option value="Saudi" <%= company.standard === 'Saudi' ? 'selected' : '' %>>Saudi</option>
+            <option value="IFRS" <%= company.standard === 'IFRS' ? 'selected' : '' %>>IFRS</option>
+          </select>
+        </label>
+      </div>
+      <div class="inline">
+        <label style="flex:1">Activity
+          <select name="activity">
+            <option value="Trading" <%= company.activity === 'Trading' ? 'selected' : '' %>>Trading</option>
+            <option value="Industrial" <%= company.activity === 'Industrial' ? 'selected' : '' %>>Industrial</option>
+            <option value="Services" <%= company.activity === 'Services' ? 'selected' : '' %>>Services</option>
+            <option value="Contracting" <%= company.activity === 'Contracting' ? 'selected' : '' %>>Contracting</option>
+            <option value="Restaurants" <%= company.activity === 'Restaurants' ? 'selected' : '' %>>Restaurants</option>
+            <option value="Medical" <%= company.activity === 'Medical' ? 'selected' : '' %>>Medical</option>
+            <option value="Poultry" <%= company.activity === 'Poultry' ? 'selected' : '' %>>Poultry</option>
+            <option value="Agricultural" <%= company.activity === 'Agricultural' ? 'selected' : '' %>>Agricultural</option>
+            <option value="Real Estate" <%= company.activity === 'Real Estate' ? 'selected' : '' %>>Real Estate</option>
+            <option value="Other" <%= company.activity === 'Other' ? 'selected' : '' %>>Other</option>
+          </select>
+        </label>
+        <label style="flex:1">Currency
+          <select name="currency">
+            <option value="EGP" <%= company.currency === 'EGP' ? 'selected' : '' %>>EGP</option>
+            <option value="SAR" <%= company.currency === 'SAR' ? 'selected' : '' %>>SAR</option>
+            <option value="USD" <%= company.currency === 'USD' ? 'selected' : '' %>>USD</option>
+          </select>
+        </label>
+      </div>
+      <div class="inline">
+        <label style="flex:1">VAT rate
+          <input type="number" step="0.01" name="vat_rate" value="<%= company.settings.vat_rate || 0 %>">
+        </label>
+        <label style="flex:1">Income tax rate
+          <input type="number" step="0.01" name="income_tax_rate" value="<%= company.settings.income_tax_rate || 0 %>">
+        </label>
+        <label style="flex:1">Zakat rate
+          <input type="number" step="0.01" name="zakat_rate" value="<%= company.settings.zakat_rate || 0 %>">
+        </label>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+
+    <form method="POST" action="/company/toggle-lock" style="margin-top:20px;">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="<%= company.is_locked ? 'secondary' : '' %>">
+        <%= company.is_locked ? 'Unlock period' : 'Lock period' %>
+      </button>
+    </form>
+  </div>
+</main>
+</body>
+</html>

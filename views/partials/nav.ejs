@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+<header>
+  <nav>
+    <div class="brand"><%= t.app_name %></div>
+    <div class="links">
+      <% if (user) { %>
+        <a href="/dashboard"><%= t.dashboard %></a>
+        <a href="/company"><%= t.company %></a>
+        <a href="/coa"><%= t.accounts %></a>
+        <a href="/journal"><%= t.journals %></a>
+        <a href="/ledger"><%= t.ledger %></a>
+        <a href="/trial-balance"><%= t.trial_balance %></a>
+        <a href="/statements"><%= t.statements %></a>
+        <a href="/audit"><%= t.audit %></a>
+        <a href="/logout"><%= t.logout %></a>
+      <% } else { %>
+        <a href="/login"><%= t.login %></a>
+        <a href="/register"><%= t.register %></a>
+      <% } %>
+    </div>
+  </nav>
+</header>
+<main class="container">
+  <div class="panel">
+    <h2><%= title %></h2>
+    <p><%= message %></p>
+  </div>
+</main>
+</body>
+</html>

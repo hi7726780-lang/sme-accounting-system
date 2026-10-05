@@ -1,0 +1,27 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Financial Statements</h2>
+    <h3><%= company.name %></h3>
+    <p>Period: <%= company.period_from %> to <%= company.period_to %> | Country: <%= company.country %> | Language: <%= lang %></p>
+
+    <div class="grid">
+      <div class="panel">
+        <h4>Income Statement</h4>
+        <p>Revenue: <%= formatMoney(statement.revenue) %></p>
+        <p>Expenses: <%= formatMoney(statement.expenses) %></p>
+        <p>Net income: <%= formatMoney(statement.netIncome) %></p>
+      </div>
+      <div class="panel">
+        <h4>Balance Sheet</h4>
+        <p>Assets: <%= formatMoney(statement.totalAssets) %></p>
+        <p>Liabilities: <%= formatMoney(statement.totalLiabilities) %></p>
+        <p>Equity: <%= formatMoney(statement.totalEquityWithIncome) %></p>
+        <p>Check: <%= formatMoney(statement.equityCheck) %></p>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

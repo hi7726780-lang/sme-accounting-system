@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #1f2a37;
+}
+
+* { box-sizing: border-box; }
+
+a { color: #1264a3; text-decoration: none; }
+
+header {
+  background: #0d3b66;
+  color: #fff;
+  padding: 16px 24px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+nav .brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+nav .links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #d9ebff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.card-grid, .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.card, .panel, .table-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+}
+
+.kpi {
+  background: linear-gradient(135deg, #3178c6, #0d3b66);
+  color: white;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.kpi small { display: block; opacity: 0.8; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, select, textarea, button {
+  border-radius: 8px;
+  border: 1px solid #dfe6ee;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+
+button {
+  background: #0d3b66;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #ecf3ff;
+  color: #0d3b66;
+}
+
+button.warning {
+  background: #b02a37;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+th, td {
+  border-bottom: 1px solid #ebeff5;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background: #f5f8fd;
+  font-size: 0.9rem;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.ok { background: #e7f8ef; color: #0d7c53; }
+.badge.warning { background: #fff2d8; color: #9a5a00; }
+.badge.error { background: #fde7e7; color: #b32d2d; }
+
+.login-box, .register-box {
+  max-width: 500px;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(17, 40, 71, 0.1);
+  padding: 28px;
+}
+
+.inline {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.error {
+  background: #ffe4e8;
+  border: 1px solid #f0b5c0;
+  color: #9a1b2d;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #54657a;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl table th, .rtl table td { text-align: right; }
+
+@media (max-width: 780px) {
+  .grid { grid-template-columns: 1fr; }
+  nav { align-items: flex-start; }
+}

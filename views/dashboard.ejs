@@ -1,0 +1,55 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Dashboard</h2>
+    <p>Company: <strong><%= company.name %></strong> | Country: <%= company.country %> | Activity: <%= company.activity %> | Role: <%= role %></p>
+    <div class="stats-grid">
+      <div class="kpi">
+        <small>Net profit</small>
+        <h3><%= formatMoney(metrics.netProfit) %></h3>
+      </div>
+      <div class="kpi">
+        <small>Cash</small>
+        <h3><%= formatMoney(metrics.cash) %></h3>
+      </div>
+      <div class="kpi">
+        <small>AR</small>
+        <h3><%= formatMoney(metrics.ar) %></h3>
+      </div>
+      <div class="kpi">
+        <small>AP</small>
+        <h3><%= formatMoney(metrics.ap) %></h3>
+      </div>
+      <div class="kpi">
+        <small>Inventory</small>
+        <h3><%= formatMoney(metrics.inventory) %></h3>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top: 24px;">
+      <div class="panel">
+        <h3>Financial ratios</h3>
+        <ul>
+          <li>Gross margin: <%= Number(metrics.grossMargin).toFixed(2) %>%</li>
+          <li>Net margin: <%= Number(metrics.netMargin).toFixed(2) %>%</li>
+          <li>ROA: <%= Number(metrics.roa).toFixed(2) %>%</li>
+          <li>ROE: <%= Number(metrics.roe).toFixed(2) %>%</li>
+          <li>Current ratio: <%= Number(metrics.currentRatio).toFixed(2) %></li>
+          <li>Quick ratio: <%= Number(metrics.quickRatio).toFixed(2) %></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Health checks</h3>
+        <% healthChecks.forEach(function(item) { %>
+          <div style="display:flex; justify-content: space-between; margin-bottom:8px;">
+            <span><%= item.label %></span>
+            <span class="badge <%= item.status %>"><%= item.value %></span>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

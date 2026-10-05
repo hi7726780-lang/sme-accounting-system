@@ -1,0 +1,33 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Trial Balance</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Account</th><th>Debit</th><th>Credit</th><th>Balance</th></tr>
+      </thead>
+      <tbody>
+        <% rows.forEach(function(row) { %>
+          <tr>
+            <td><%= row.code %></td>
+            <td><%= row.english_name %></td>
+            <td><%= formatMoney(Math.max(row.debit - row.credit, 0)) %></td>
+            <td><%= formatMoney(Math.max(row.credit - row.debit, 0)) %></td>
+            <td><%= formatMoney(row.balance) %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">Totals</th>
+          <th><%= formatMoney(totalDebit) %></th>
+          <th><%= formatMoney(totalCredit) %></th>
+          <th><%= formatMoney(totalDebit - totalCredit) %></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</main>
+</body>
+</html>

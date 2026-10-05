@@ -1,0 +1,24 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Audit Log</h2>
+    <table>
+      <thead>
+        <tr><th>When</th><th>User</th><th>Action</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <% logs.forEach(function(log) { %>
+          <tr>
+            <td><%= log.created_at %></td>
+            <td><%= log.email || 'System' %></td>
+            <td><%= log.action %></td>
+            <td><%= log.details %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

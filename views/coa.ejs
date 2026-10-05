@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="container">
+  <div class="panel">
+    <h2>Chart of Accounts</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>English</th>
+          <th>Arabic</th>
+          <th>Group</th>
+          <th>Nature</th>
+          <th>Active</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% accounts.forEach(function(account) { %>
+          <tr>
+            <td><%= account.code %></td>
+            <td><%= account.english_name %></td>
+            <td><%= account.arabic_name %></td>
+            <td><%= account.account_group %></td>
+            <td><%= account.nature %></td>
+            <td><%= account.is_active ? 'Yes' : 'No' %></td>
+            <td>
+              <form method="POST" action="/coa/toggle">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="accountId" value="<%= account.id %>">
+                <button type="submit" class="secondary"><%= account.is_active ? 'Deactivate' : 'Activate' %></button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>
